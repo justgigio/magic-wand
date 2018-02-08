@@ -3,6 +3,9 @@ Magic Wand
 
 Be a powerful Wizard with this amazing plugable book of spells
 
+[![Build Status](https://travis-ci.org/giovanecosta/magic-wand.svg?branch=master)](https://travis-ci.org/giovanecosta/magic-wand)
+[![Coverage Status](https://coveralls.io/repos/github/giovanecosta/magic-wand/badge.svg?branch=master)](https://coveralls.io/github/giovanecosta/magic-wand?branch=master)
+
 ## Installation
 
   `npm install magic-wand`
