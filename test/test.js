@@ -2,13 +2,13 @@
 
 import { expect } from 'chai';
 
-import { GitHub } from '../index';
+import magicWand from '../index';
 
 describe('#dummyFunc', function() {
 
   it('should return a dummy message', function() {
 
-    let result = GitHub.status();
+    let result = magicWand.foo();
     expect(result).to.equal('Not implemented');
   });
 });
