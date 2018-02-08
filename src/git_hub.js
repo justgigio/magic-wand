@@ -7,14 +7,14 @@ module.exports = {
    * Pull from current remote branch. Like in `git pull origin master`
    */
   pull() {
-    let cmd = shell.exec(`git pull origin #{getCurrentBranch()}`);
+    const cmd = shell.exec(`git pull origin #{getCurrentBranch()}`);
     return cmd.stdout.trim();
   },
   /**
    * Push to current remote branch. Like in `git push origin master`
    */
   push() {
-    let cmd = shell.exec(`git push origin #{getCurrentBranch()}`);
+    const cmd = shell.exec(`git push origin #{getCurrentBranch()}`);
     return cmd.stdout.trim();
   },
   /**
@@ -22,7 +22,7 @@ module.exports = {
    * @return {string}
    */
   getCurrentBranch() {
-    let cmd = shell.exec('git rev-parse --abbrev-ref HEAD');
+    const cmd = shell.exec('git rev-parse --abbrev-ref HEAD');
     return cmd.stdout.trim();
   },
 
@@ -31,8 +31,8 @@ module.exports = {
    * @return {string}
    */
   getRepoName() {
-    let remoteOriginUrl = this.getRemoteOriginUrl();
-    let match = remoteOriginUrl.match(/\:.+\/(.+)\.git/);
+    const remoteOriginUrl = this.getRemoteOriginPath();
+    let match = remoteOriginUrl.match(/\/(.+)\.git/);
 
     return match[1];
   },
@@ -42,18 +42,21 @@ module.exports = {
    * @return {string}
    */
   getRepoOwner() {
-    let remoteOriginUrl = this.getRemoteOriginUrl();
-    let match = remoteOriginUrl.match(/\:(.+)\/.+\.git/);
+    const remoteOriginUrl = this.getRemoteOriginPath();
+    let parts = remoteOriginUrl.split('/');
 
-    return match[1];
+    return parts[0];
   },
 
   /**
    * Return current git remote url config. Like in `git config --get remote.origin.url`
    * @return {string}
    */
-  getRemoteOriginUrl() {
-    let cmd = shell.exec('git config --get remote.origin.url');
-    return cmd.stdout.trim();
+  getRemoteOriginPath() {
+    const cmd = shell.exec('git config --get remote.origin.url');
+    let url = cmd.stdout.trim();
+
+    url = url.replace(/(https\:\/\/)?(git\@)?github\.com\:?\/?/, '');
+    return url;
   }
 }

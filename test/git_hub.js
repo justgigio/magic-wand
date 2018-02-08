@@ -19,11 +19,11 @@ describe('#GitHub Tools', function() {
     });
   });
 
-  context('remote origin url', function() {
-    it('should return current remote origin url', function() {
+  context('remote origin path', function() {
+    it('should return current remote origin path', function() {
 
-      let result = git.getRemoteOriginUrl();
-      expect(result).to.equal('git@github.com:giovanecosta/magic-wand.git');
+      let result = git.getRemoteOriginPath();
+      expect(result).to.equal('giovanecosta/magic-wand.git');
     });
   });
 
