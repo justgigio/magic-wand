@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --reporter nyan --require babel-core/register",
     "start": "babel-node --presets es2015 index.js",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha spec test -- --require babel-core/register"
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha spec test -- --require babel-core/register",
+    "console": "node_modules/.bin/babel-node --presets es2015,stage-3"
   },
   "engines": {
     "node": ">=8.9.0"
