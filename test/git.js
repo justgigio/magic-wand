@@ -5,9 +5,9 @@ import { expect } from 'chai';
 import { execSync } from 'child_process';
 
 
-import git from '../src/git_hub';
+import git from '../src/git';
 
-describe('#GitHub Tools', function() {
+describe('#Git Tools', function() {
 
   context('current_branch', function() {
     it('should return current branch', function() {
