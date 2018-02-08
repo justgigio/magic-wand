@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/giovanecosta/magic-wand#readme",
   "dependencies": {
+    "asana": "^0.15.0",
     "babel-cli": "^6.0.0",
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.0.0",
