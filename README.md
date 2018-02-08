@@ -14,18 +14,20 @@ Be a powerful Wizard with this amazing plugable book of spells
 
     import { git } from 'magic-wand';
 
-    console.log(git.status());
+    console.log(git.getCurrentBranch());
   
-  Output should be something like 
-  ```
-  On branch master
-  Your branch is up-to-date with 'origin/master'.
-  Changes to be committed:
-    (use "git reset HEAD <file>..." to unstage)
+  Output should be something like: `'master'`
 
-    new file:   index.js
+## How to get Asana Access Token
 
-  ```
+1. Log in to your Asana Account.
+2. Click on your profile picture to open menu. 
+3. Go into "My Profile Settings".
+4. Select "Apps" tab. 
+5. Click on "Manage Developer Apps" link on bottom left corner. 
+6. Click on "+ Create New personal Access Token" link. 
+
+It's done (you can give it a reference name if you want).
 
 ## Tests
 
