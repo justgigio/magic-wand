@@ -3,6 +3,7 @@
 import shell from 'shelljs';
 
 module.exports = {
+
   /**
    * Pull from current remote branch. Like in `git pull origin master`
    */
@@ -10,6 +11,7 @@ module.exports = {
     const cmd = shell.exec(`git pull origin #{getCurrentBranch()}`);
     return cmd.stdout.trim();
   },
+
   /**
    * Push to current remote branch. Like in `git push origin master`
    */
@@ -17,6 +19,7 @@ module.exports = {
     const cmd = shell.exec(`git push origin #{getCurrentBranch()}`);
     return cmd.stdout.trim();
   },
+
   /**
    * Return current git branch. Like in `git rev-parse --abbrev-ref HEAD`
    * @return {string}
