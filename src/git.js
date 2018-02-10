@@ -4,11 +4,13 @@ import shell from 'shelljs';
 
 module.exports = {
 
+  shell,
+
   /**
    * Pull from current remote branch. Like in `git pull origin master`
    */
   pull() {
-    const cmd = shell.exec(`git pull origin #{getCurrentBranch()}`);
+    const cmd = this.shell.exec(`git pull origin ${this.getCurrentBranch()}`);
     return cmd.stdout.trim();
   },
 
@@ -16,7 +18,7 @@ module.exports = {
    * Push to current remote branch. Like in `git push origin master`
    */
   push() {
-    const cmd = shell.exec(`git push origin #{getCurrentBranch()}`);
+    const cmd = this.shell.exec(`git push origin ${this.getCurrentBranch()}`);
     return cmd.stdout.trim();
   },
 
@@ -25,7 +27,7 @@ module.exports = {
    * @return {string}
    */
   getCurrentBranch() {
-    const cmd = shell.exec('git rev-parse --abbrev-ref HEAD');
+    const cmd = this.shell.exec('git rev-parse --abbrev-ref HEAD');
     return cmd.stdout.trim();
   },
 
@@ -56,7 +58,7 @@ module.exports = {
    * @return {string}
    */
   getRemoteOriginPath() {
-    const cmd = shell.exec('git config --get remote.origin.url');
+    const cmd = this.shell.exec('git config --get remote.origin.url');
     let url = cmd.stdout.trim();
 
     url = url.replace(/(https\:\/\/)?(git\@)?github\.com\:?\/?/, '');
