@@ -61,7 +61,7 @@ module.exports = {
     const cmd = this.shell.exec('git config --get remote.origin.url');
     let url = cmd.stdout.trim();
 
-    url = url.replace(/(https\:\/\/)?(git\@)?github\.com\:?\/?/, '');
+    url = url.replace(/(https:\/\/)?(git@)?github\.com:?\/?/, '');
     return url;
   }
-}
+};
