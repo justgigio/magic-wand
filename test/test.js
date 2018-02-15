@@ -2,13 +2,13 @@
 
 import { expect } from 'chai';
 
-import magicWand from '../index';
+import MagicWand from '../index';
 
 describe('#dummyFunc', function() {
 
   it('should return a dummy message', function() {
 
-    let result = magicWand.foo();
+    let result = (new MagicWand).foo();
     expect(result).to.equal('Not implemented');
   });
 });

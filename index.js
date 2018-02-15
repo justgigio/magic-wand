@@ -1,6 +1,7 @@
 'use strict';
 
-module.exports = {
+class MagicWand {
+
   /**
    * Adds commas to a number
    * @param {number} number
@@ -10,4 +11,7 @@ module.exports = {
   foo() {
     return 'Not implemented';
   }
-};
+
+}
+
+module.exports = MagicWand;

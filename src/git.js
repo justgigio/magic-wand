@@ -2,12 +2,17 @@
 
 import shell from 'shelljs';
 
+/**
+ * @module git
+ * @requires shelljs
+ * @exports {git, shell}
+ */
 module.exports = {
 
   shell,
 
   /**
-   * Pull from current remote branch. Like in `git pull origin master`
+   * Pull from current remote branch. Like in <code>git pull origin master</code>
    */
   pull() {
     const cmd = this.shell.exec(`git pull origin ${this.getCurrentBranch()}`);
@@ -15,7 +20,7 @@ module.exports = {
   },
 
   /**
-   * Push to current remote branch. Like in `git push origin master`
+   * Push to current remote branch. Like in <code>git push origin master</code>
    */
   push() {
     const cmd = this.shell.exec(`git push origin ${this.getCurrentBranch()}`);
@@ -23,7 +28,7 @@ module.exports = {
   },
 
   /**
-   * Return current git branch. Like in `git rev-parse --abbrev-ref HEAD`
+   * Return current git branch. Like in <code>git rev-parse --abbrev-ref HEAD</code>
    * @return {string}
    */
   getCurrentBranch() {
@@ -54,7 +59,7 @@ module.exports = {
   },
 
   /**
-   * Return current git remote url config. Like in `git config --get remote.origin.url`
+   * Return current git remote url config. Like in <code>git config --get remote.origin.url</code>
    * @return {string}
    */
   getRemoteOriginPath() {
