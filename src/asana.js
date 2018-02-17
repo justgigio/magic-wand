@@ -22,9 +22,9 @@ class Asana {
    * @param {number} taskId
    */
   async getTask(taskId) {
-    return new Promise(resolve => {
+    return this.spellfy((r) => {
       this.client.tasks.findById(taskId).then(function(data){
-        resolve(data);
+        r(data);
       });
     });
   }
@@ -35,6 +35,12 @@ class Asana {
    */
   updateTask(taskId) {
     throw new Error('Not implemented');
+  }
+
+  async spellfy(fn) {
+    return new Promise(resolve => {
+      fn(resolve);
+    });
   }
 
 }

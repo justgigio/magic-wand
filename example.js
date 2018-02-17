@@ -9,29 +9,3 @@ import { Asana } from './src/asana';
   console.log(task.name);
 
 })();
-
-// async function add3(x) {
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-//       resolve(x + 3);
-//     }, 2000);
-//   });
-// }
-
-// async function t3() {
-//   let x;
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-//       x = 24;
-//       resolve(x);
-//     }, 2000);
-//   });
-// }
-
-// async function print(){
-//   var k = await t3();
-//   var l = await add3(k)
-//   console.log(l);
-// }
-
-// print()
