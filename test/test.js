@@ -2,13 +2,25 @@
 
 import { expect } from 'chai';
 
-import MagicWand from '../index';
+import { MagicWand } from '../index';
 
-describe('#dummyFunc', function() {
+describe('#MagicWand', function() {
 
-  it('should return a dummy message', function() {
+  context('spellfy', function(){
 
-    let result = (new MagicWand).foo();
-    expect(result).to.equal('Not implemented');
+    it('should make functions work with await', async function() {
+
+      let mw = new MagicWand();
+
+      let spell = function(){
+        return mw.spellfy(42);
+      }
+
+      let fourtyTwo = await spell();
+
+      expect(fourtyTwo).to.equal(42);
+    });
+
   });
+
 });

@@ -3,15 +3,33 @@
 class MagicWand {
 
   /**
-   * Adds commas to a number
-   * @param {number} number
-   * @param {string} locale
-   * @return {string}
+   * Implements async/await interface for any value
+   * @param {something} something like a promise, function or any value
+   * @return {Promise}
    */
-  foo() {
-    return 'Not implemented';
-  }
+  async spellfy(something) {
+    // Test if arg implements Promise interface
+    let promise;
+    if (typeof something.then === 'function' || typeof something.catch === 'function') {
+      promise = something;
+    } else {
+      promise = new Promise(resolve => {
+        if (typeof something === 'function') {
+          resolve(something());
+        } else {
+          resolve(something);
+        }
+      });
+    }
 
+    return new Promise((resolve, reject) => {
+      promise.then(function(){
+        resolve.apply(null, arguments);
+      }).catch(function(){
+        throw new Error(`Promise rejected with arguments: ${arguments}`);
+      });
+    });
+  }
 }
 
-module.exports = MagicWand;
+module.exports = { MagicWand };

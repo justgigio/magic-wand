@@ -1,8 +1,9 @@
 'use strict';
 
 import asana from 'asana';
+import { MagicWand } from '../index';
 
-class Asana {
+class Asana extends MagicWand {
 
   /**
    * Creates Asana object
@@ -14,6 +15,7 @@ class Asana {
 
       throw new Error('No Asana access token provided. For more information: https://github.com/giovanecosta/magic-wand#how-to-get-asana-access-token');
     }
+    super();
     this.client = asana.Client.create().useAccessToken(accessToken);
   }
 
@@ -21,12 +23,10 @@ class Asana {
    * Get an Asana task
    * @param {number} taskId
    */
-  async getTask(taskId) {
-    return this.spellfy((r) => {
-      this.client.tasks.findById(taskId).then(function(data){
-        r(data);
-      });
-    });
+  getTask(taskId) {
+    return this.spellfy(
+      this.client.tasks.findById(taskId)
+    );
   }
 
   /**
@@ -35,12 +35,6 @@ class Asana {
    */
   updateTask(taskId) {
     throw new Error('Not implemented');
-  }
-
-  async spellfy(fn) {
-    return new Promise(resolve => {
-      fn(resolve);
-    });
   }
 
 }
