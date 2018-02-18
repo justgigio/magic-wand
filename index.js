@@ -8,7 +8,7 @@ class MagicWand {
    * @param {something} something like a promise, function or any value
    * @return {Promise}
    */
-  async spellfy(something) {
+  spellfy(something) {
     // Test if arg implements Promise interface
     let promise;
     if (typeof something.then === 'function' || typeof something.catch === 'function') {

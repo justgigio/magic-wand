@@ -35,7 +35,7 @@ class Asana extends MagicWand {
    * @param {number} taskId
    */
   updateTask(taskId) {
-    throw new Error('Not implemented');
+    throw new Error(`Not implemented ${taskId}`);
   }
 
 }

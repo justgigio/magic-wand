@@ -12,7 +12,7 @@
     "lint": "./node_modules/.bin/eslint index.js src/**"
   },
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=9.5.0"
   },
   "repository": {
     "type": "git",
