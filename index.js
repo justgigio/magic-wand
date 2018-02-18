@@ -2,6 +2,7 @@
 
 class MagicWand {
 
+  constructor(){}
   /**
    * Implements async/await interface for any value
    * @param {something} something like a promise, function or any value
