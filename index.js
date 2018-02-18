@@ -13,9 +13,13 @@ class MagicWand {
     if (typeof something.then === 'function' || typeof something.catch === 'function') {
       promise = something;
     } else {
-      promise = new Promise(resolve => {
+      promise = new Promise((resolve, reject) => {
         if (typeof something === 'function') {
-          resolve(something());
+          try {
+            resolve(something());
+          } catch (err) {
+            reject(err);
+          }
         } else {
           resolve(something);
         }
@@ -25,8 +29,8 @@ class MagicWand {
     return new Promise((resolve, reject) => {
       promise.then(function(){
         resolve.apply(null, arguments);
-      }).catch(function(){
-        throw new Error(`Promise rejected with arguments: ${arguments}`);
+      }).catch(function(error){
+        reject(error);
       });
     });
   }
