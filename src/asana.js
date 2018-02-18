@@ -15,6 +15,7 @@ class Asana extends MagicWand {
       throw new Error('No Asana access token provided. For more information: https://github.com/giovanecosta/magic-wand#how-to-get-asana-access-token');
     }
     /* istanbul ignore next */
+    // Remove ignore when issue solved: https://github.com/gotwarlost/istanbul/issues/690
     super();
     this.client = asana.Client.create().useAccessToken(accessToken);
   }
