@@ -1,0 +1,11 @@
+
+import MagicWand from './index';
+import { Asana } from './src/asana';
+
+(async function() {
+
+  var asana = new Asana('YOUR_TOKEN_HERE');
+  var task = await asana.getTask(553688717926160);
+  console.log(task.name);
+
+})();
