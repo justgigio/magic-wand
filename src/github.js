@@ -3,6 +3,9 @@
 //
 // # GitHub Client
 //
+// Docs:  https://github.com/octokit/rest.js
+//        https://octokit.github.io/rest.js/
+//
 // ## Usage:
 //
 // var github = require("./src/github.js");
