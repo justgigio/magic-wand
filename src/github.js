@@ -11,8 +11,7 @@
 //
 // var github = require("./src/github.js");
 // var cli = new github.GitHub();
-// cli.pullRequests();
-// cli.pull_requests
+// cli.pullRequest(1).then(result => {cli.result = result})
 
 
 import github from 'github';
