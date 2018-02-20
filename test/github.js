@@ -1,11 +1,16 @@
 'use strict';
 
+// Helpers
 import { expect } from 'chai';
 import sinon from 'sinon';
+import envhelper from './env_helper';
+
+// Factories
 import factory from 'factory-girl';
 import pr from './factories/pull_request';
 import reviewers from './factories/requested_reviewers';
 
+// Modules
 import github from 'github';
 import { GitHub } from '../src/github';
 
