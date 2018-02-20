@@ -16,14 +16,14 @@
 
 
 import github from 'github';
+import { MagicWand } from '../index';
 require('dotenv').config()
 
-class GitHub {
+class GitHub extends MagicWand {
 
   constructor() {
-    this.client = new github({
-      debug: true
-    });
+    super();
+    this.client = new github();
     this.client.authenticate({
       type: 'oauth',
       token: process.env.TOKEN
@@ -35,24 +35,35 @@ class GitHub {
     this.current = {"owner": owner, "repo": repo };
   }
 
-  async pullRequests() {
-    this.pull_requests = await this.client.pullRequests.getAll(this.current);
+  pullRequests() {
+    return this.spellfy(
+      this.client.pullRequests.getAll(this.current)
+    );
   }
 
-  async pullRequest(number) {
+  pullRequest(number) {
     let params = Object.assign({}, this.current, {"number": number});
-    this.pull_request = await this.client.pullRequests.get(params);
+
+    return this.spellfy(
+      this.client.pullRequests.get(params)
+    );
   }
 
-  async createPullRequest(head, base="master", title="PR") {
+  createPullRequest(head, base="master", title="PR") {
     let params = Object.assign({}, this.current, {"head": head, "base": base, "title": title});
-    this.pull_request = await this.client.pullRequests.create(params);
+
+    return this.spellfy(
+      this.client.pullRequests.create(params)
+    );
   }
 
-  async requestReview(reviewers) {
-    if (typeof this.pull_request !== "undefined") {
-      let params = Object.assign({}, this.current, {"number": this.pull_request.data.number, "reviewers": reviewers});
-      this.reviewrs = await this.client.pullRequests.createReviewRequest(params)
+  requestReview(pull_request, reviewers) {
+    if (typeof pull_request !== "undefined") {
+      let params = Object.assign({}, this.current, {"number": pull_request.data.number, "reviewers": reviewers});
+
+      return this.spellfy(
+        this.client.pullRequests.createReviewRequest(params)
+      );
     }
   }
 }
