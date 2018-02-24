@@ -13,6 +13,7 @@ import reviewers from './factories/requested_reviewers';
 // Modules
 import github from 'github';
 import { GitHub } from '../src/github';
+import { MagicWand } from '../index';
 
 describe('#GitHub Tools', function() {
 
@@ -30,6 +31,14 @@ describe('#GitHub Tools', function() {
     it('should create GitHub Client', function() {
       const githubApi = new GitHub();
       expect(githubApi).to.be.an.instanceof(GitHub);
+      expect(githubApi).to.be.an.instanceof(MagicWand);
+      expect(githubApi.client).to.be.an.instanceof((new github()).constructor);
+    });
+
+    it('should set current owner and repo', function() {
+      const githubApi = new GitHub();
+      expect(githubApi.current.owner).to.eq("ftuyama");
+      expect(githubApi.current.repo).to.eq("magic-wand");
     });
 
     it('should break without access token', function() {
