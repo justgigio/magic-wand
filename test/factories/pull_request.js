@@ -1,6 +1,7 @@
 import factory from 'factory-girl';
 
 factory.define('pull_request', Object, (buildOptions = {}) => {
+  // Default PR attributes
   const attrs = {
     data: { 
       url: 'https://api.github.com/repos/ftuyama/magic-wand/pulls/1',
@@ -50,7 +51,7 @@ factory.define('pull_request', Object, (buildOptions = {}) => {
       comments_url: 'https://api.github.com/repos/ftuyama/magic-wand/issues/1/comments',
       statuses_url: 'https://api.github.com/repos/ftuyama/magic-wand/statuses/32d742023aec9f1a3d8b5c960497f85068752883',
       head: { 
-        label: 'ftuyama:github',
+        label: 'ftuyama:branch',
         ref: 'github',
         sha: '32d742023aec9f1a3d8b5c960497f85068752883',
         user: [Object],
@@ -89,8 +90,19 @@ factory.define('pull_request', Object, (buildOptions = {}) => {
       status: '200 OK' 
     } 
   }
-  if (typeof buildOptions.requested_reviewers !== "undefined") {
+
+  // Custom PR attributes
+  if (typeof buildOptions.requested_reviewers !== "undefined")
     attrs.data.requested_reviewers = [buildOptions.requested_reviewers];
-  }
+
+  if (typeof buildOptions.head_label !== "undefined")
+    attrs.data.head.label = attrs.data.user.login + ":" + buildOptions.head_label;
+
+  if (typeof buildOptions.base_label !== "undefined")
+    attrs.data.base.label = attrs.data.user.login + ":" + buildOptions.base_label;
+
+  if (typeof buildOptions.title !== "undefined")
+    attrs.data.title = buildOptions.title;
+
   return attrs;
  });
