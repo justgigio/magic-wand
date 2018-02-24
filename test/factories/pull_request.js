@@ -92,16 +92,16 @@ factory.define('pull_request', Object, (buildOptions = {}) => {
   }
 
   // Custom PR attributes
-  if (typeof buildOptions.requested_reviewers !== "undefined")
+  if (buildOptions.requested_reviewers)
     attrs.data.requested_reviewers = [buildOptions.requested_reviewers];
 
-  if (typeof buildOptions.head_label !== "undefined")
+  if (buildOptions.head_label)
     attrs.data.head.label = attrs.data.user.login + ":" + buildOptions.head_label;
 
-  if (typeof buildOptions.base_label !== "undefined")
+  if (buildOptions.base_label)
     attrs.data.base.label = attrs.data.user.login + ":" + buildOptions.base_label;
 
-  if (typeof buildOptions.title !== "undefined")
+  if (buildOptions.title)
     attrs.data.title = buildOptions.title;
 
   return attrs;

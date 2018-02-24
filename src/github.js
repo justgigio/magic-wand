@@ -21,11 +21,14 @@ require('dotenv').config()
 class GitHub extends MagicWand {
 
   constructor() {
+    if (!process.env.GITHUB_TOKEN) {
+      throw new Error('No GitHub access token provided.');
+    }
     super();
     this.client = new github();
     this.client.authenticate({
       type: 'oauth',
-      token: process.env.TOKEN
+      token: process.env.GITHUB_TOKEN
     });
     this.setRepo(process.env.REPO_OWNER, process.env.REPO);
   }

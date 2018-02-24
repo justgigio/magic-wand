@@ -31,6 +31,11 @@ describe('#GitHub Tools', function() {
       const githubApi = new GitHub();
       expect(githubApi).to.be.an.instanceof(GitHub);
     });
+
+    it('should break without access token', function() {
+      delete process.env['GITHUB_TOKEN'];
+      expect(() => new GitHub()).to.throw(/No GitHub access token provided/);
+    });
   });
 
   context('Getting Pull Requests', function() {
