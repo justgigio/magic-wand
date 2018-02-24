@@ -24,6 +24,7 @@ class GitHub extends MagicWand {
     if (!process.env.GITHUB_TOKEN) {
       throw new Error('No GitHub access token provided.');
     }
+    /* istanbul ignore next */
     super();
     this.client = new github();
     this.client.authenticate({
